@@ -1,0 +1,12 @@
+<h1> Movies Results Page </h1>
+
+<div id = discover-button >
+  <%= button_to 'Discover Page', discover_user_path(@user.id), method: :get %>
+</div>
+
+<% @movies.each do |movie| %>
+  <div id ="movie">
+    <h2><%= movie.title %></h2>
+    <p>Vote Average: <%= movie.vote_average %> </p>
+  </div>
+<% end %>
