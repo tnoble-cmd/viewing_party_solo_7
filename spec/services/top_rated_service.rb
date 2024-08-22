@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe SearchService do
+RSpec.describe TopRatedService do
 
   before :each do
-    stub_request(:get, "https://api.themoviedb.org/3/search/movie?api_key=#{Rails.application.credentials.movie_db[:key]}&language=en-US&query=Godzilla&page=1&include_adult=false").
+    stub_request(:get, "https://api.themoviedb.org/3/movie/top_rated?api_key=#{Rails.application.credentials.movie_db[:key]}&language=en-US&page=1").
       with(
         headers: {
           'Accept'=>'*/*',
@@ -19,17 +19,10 @@ RSpec.describe SearchService do
       }.to_json, headers: { 'Content-Type' => 'application/json' })
   end
 
-  describe '#initialize' do
-    it 'sets the query instance variable' do
-      service = SearchService.new('Godzilla')
-      expect(service.instance_variable_get(:@query)).to eq('Godzilla')
-    end
-end
-
-  describe '#search_service' do
+  describe '#show_top_rated_movies' do
     it 'returns parsed JSON response' do
-      service = SearchService.new('Godzilla')
-      results = service.search_service
+      service = TopRatedService.new
+      results = service.show_top_rated_movies
 
       expect(have_http_status(200))
       expect(results).to be_an(Array)
