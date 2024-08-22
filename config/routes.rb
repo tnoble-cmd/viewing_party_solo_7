@@ -13,10 +13,6 @@ Rails.application.routes.draw do
     end
 
     resources :movies, only: [:index, :show] do
-      collection do
-        get 'top_rated'
-        get 'search'
-      end
     end
   end
 end

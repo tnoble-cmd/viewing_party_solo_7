@@ -2,8 +2,8 @@ class MoviesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    search_facade = SearchFacade.new
-    top_rated = TopRated.new
+    search_facade = MovieFacade.new
+    top_rated = MovieFacade.new
     
 
     if params[:query].present?
