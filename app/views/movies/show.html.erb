@@ -1,0 +1,16 @@
+
+<div id = "button-section">
+  <%# <%= button_to "Visiting Party", new_user_movie_viewing_party_path, method: :get %>
+  <%= button_to "Discover Page", discover_user_path(@user.id), method: :get %>
+</div>
+
+<div id = "movie-section">
+  <h2> <%= @movie.title %> </h2>
+  <p> Vote Average: <%= @movie.vote_average %> </p>
+  <p> Runtime: <%= @movie.runtime_in_hours_and_minutes %></p>
+  <p> Genre:  <% @movie.genres.each do |genre| %>
+                <%= genre[:name] %>
+              <% end %>
+  </p>
+  <p> Overview: <%= @movie.overview %> </p>
+</div>

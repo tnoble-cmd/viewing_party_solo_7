@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
 
     resources :movies, only: [:index, :show] do
+      resources :viewing_party, only: [:new]
     end
   end
 end
